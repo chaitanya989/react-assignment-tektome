@@ -1,13 +1,21 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import api from '../../lib/axios';
-import { setUsers, User } from '../../features/user/userSlice';
+import { selectUserById, selectUserByName, setUsers, User } from '../../features/user/userSlice';
 import { RootState } from '../../store/store';
 import Link from 'next/link';
 
 export default function Users() {
   const dispatch = useDispatch();
   const users = useSelector((state: RootState) => state.user.list);
+
+  const userID = useSelector((state: RootState) => selectUserById(state, 1));    
+  console.log('User by ID:', userID); // Log the selected user by ID
+
+   // Example of selecting a user by ID
+  console.log('Selected User:', userID);
+
+  // useSelector(selectUserByName)
 
   useEffect(() => {
     api.get('/users').then(res => dispatch(setUsers(res.data)));
