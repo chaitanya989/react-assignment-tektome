@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { get } from 'http';
 
 
 export type UserList = {
@@ -51,4 +52,11 @@ const userSlice = createSlice({
 });
 
 export const { setUsers } = userSlice.actions;
+export const selectUsers = (state: { user: UserList }) => state.user.list;
+
+export const selectUserById = (state: { user: UserList }, userId: number) =>
+  state.user.list.find(user => user.id === userId);
+
+export const selectUserByName = (state: { user: UserList }) => state.user.list[0].name
+
 export default userSlice.reducer;

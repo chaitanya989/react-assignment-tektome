@@ -9,6 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <li><Link href="/" className="hover:underline">Home</Link></li>
           <li><Link href="/users" className="hover:underline">Users</Link></li>
           <li><Link href="/tasks" className="hover:underline">Tasks</Link></li>
+          <li><Link href="/posts" className="hover:underline">Posts</Link></li>
         </ul>
       </nav>
       <main className="flex-1 p-4">{children}</main>
